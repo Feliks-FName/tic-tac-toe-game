@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap" rel="stylesheet">
+	<title>Игра крестики-нолик и</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+	<!-- windows game -->
+	<section class="wrapper">
+		<div class="reload-game">
+			<div class="score-inner">
+				<p class="score-x">Побед крестиков</p>
+				<p class="score-o">Побед ноликов</p>
+			</div>
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" focusable="false" viewBox="0 0 12 12">
+				<path fill="none" stroke="currentColor" stroke-linecap="round"
+					d="M10 4c-.8-1.1-2-2.5-4.1-2.5-2.5 0-4.4 2-4.4 4.5s2 4.5 4.4 4.5c1.3 0 2.5-.6 3.3-1.5m1.3-7.5V4c0 .3-.2.5-.5.5H7.5" />
+			</svg>
+
+		</div>
+
+		<div class="inner-game">
+			<h1 class="header-inner">Крестики-нолики</h1>
+
+			<div id="box-window_game">
+				<div class="box" tabindex="1"></div>
+				<div class="box" tabindex="2"></div>
+				<div class="box" tabindex='3'></div>
+				<div class="box" tabindex="4"></div>
+				<div class="box" tabindex="5"></div>
+				<div class="box" tabindex="6"></div>
+				<div class="box" tabindex="7"></div>
+				<div class="box" tabindex="8"></div>
+				<div class="box" tabindex="9"></div>
+			</div>
+		</div>
+
+	</section><!-- /wrapper -->
+
+
+	<!-- modal -->
+	<section class="modal">
+		<div class="owerley">
+			<div class="section-inner">
+				<div class="section-header">
+					<h2 class="section-title">Игра окончена</h2>
+				</div>
+
+				<p class="result-game"></p>
+				<button class="btn" id="btn-js" type="button" method='post'>Закрыть и начать новую игру</button>
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- js -->
+	<script src="main.js"></script>
+</body>
+
+</html>
