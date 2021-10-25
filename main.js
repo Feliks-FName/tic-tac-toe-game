@@ -6,10 +6,28 @@ const btn = document.getElementById('btn-js'); // кнопка, по клику 
 let strResult = document.querySelector('.result-game'); //Строка, которая, в зависимости от результата, подсталяется в модалку
 let modal = document.querySelector('.modal'); // Модальное окно
 
-let reloadSvg = document.querySelector('.reload-game svg');
+let reloadSvg = document.querySelector('.reload-svg'); //Иконка перезагрузки игрового поля
+let soundSvg = document.querySelector('.sound-svg'); // Иконка со звуком
+let innerSvg = document.querySelector('.svg-item'); // Обертка для svg
 
 let move = 0; // Ходы
 let result = ''; //Динамическая строка с результатом
+// Чей ход
+
+let whoMove = document.getElementById('who');
+/* (function writeWhoMove() {
+	if (move % 2 == 0) {
+		return whoMove.innerHTML = 'Ход Х';
+	} else if (move % 2 != 0) {
+		return whoMove.innerHTML = 'Ход 0';
+
+	} else if (modal.classList.contains('active')) {
+		return whoMove.innerHTML = 'Ход Х';
+	}
+})(); */
+// whoMove.innerHTML = writeWhoMove();
+console.log(whoMove);
+
 
 // Кол-во побед
 let winX = 1;
@@ -19,18 +37,20 @@ let scoreX = document.querySelector('.score-x');
 let scoreO = document.querySelector('.score-o');
 
 
-
+// Игровое окно
 windowGame.addEventListener('click', function (e) {
 	if (e.target.className == 'box') {
 		move % 2 === 0 ? e.target.classList.add('activeX') : e.target.classList.add('activeO');
 		move++;
 		check();
 
-	};
 
+	};
 });
 
 function check() {
+	// writeWhoMove();
+
 	const arr = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -99,6 +119,8 @@ function prepaireResult(str) {
 	});
 }
 
+
+// Клик по иконке сброса игрового поля
 reloadSvg.addEventListener('click', function (e) {
 	e.preventDefault();
 	reloadGame();
@@ -111,6 +133,7 @@ function clearField() {
 	};
 }
 
+
 // сброс текущей игры
 function reloadGame() {
 	reloadSvg.classList.add('active');
@@ -120,7 +143,12 @@ function reloadGame() {
 	setTimeout(function () {
 		reloadSvg.classList.remove('active');
 	}, 500)
-}
+};
+
+
+/* function firstWhoMove() {
+	whoMove.innerHTML = 'Ход Х'
+} */
 
 //Черта победы
 function addClassLineBox(arr, i) {
@@ -133,3 +161,46 @@ function addClassLineBox(arr, i) {
 function scoreWin(winner, num, name) {
 	winner.innerHTML = `Побед ${name}: ${num}`;
 }
+
+// Звуки клика по игровому полю
+function soundClick() {
+	let audio = new Audio(); // Создаём новый элемент Audio
+	audio.src = './click.mp3'; // Указываем путь к звуку "клика"
+	audio.autoplay = true; // Автоматически запускаем
+}
+
+//событие клика по иконке звука
+soundSvg.addEventListener('click', function (e) {
+	e.preventDefault();
+	innerSvg.classList.toggle('no-sound');
+	getElem(boxes, delAttrBox); //Добавить/убрать звук
+
+})
+
+// Добавить/убрать звук
+function delAttrBox(elem) {
+	if (innerSvg.classList.contains('no-sound')) {
+		elem.setAttribute('onclick', '');
+	} else {
+		elem.setAttribute('onclick', 'soundClick()');
+	}
+}
+//Перебор box и вкл/выкл звука
+/* function delAttrBox() {
+	for (const elem of boxes) {
+		if (innerSvg.classList.contains('no-sound')) {
+			elem.setAttribute('onclick', '');
+		} else {
+			elem.setAttribute('onclick', 'soundClick()');
+		}
+
+	}
+} */
+
+// Функция-коллбек для взаимодействия с элементами игрового поля
+function getElem(arr, callback) {
+	for (const elem of boxes) {
+		callback(elem);
+	}
+}
+

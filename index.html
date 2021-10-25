@@ -18,29 +18,52 @@
 	<section class="wrapper">
 		<div class="reload-game">
 			<div class="score-inner">
-				<p class="score-x">Побед крестиков</p>
-				<p class="score-o">Побед ноликов</p>
+				<p class="score-x">Побед крестиков: 0</p>
+				<p class="score-o">Побед ноликов: 0</p>
 			</div>
-			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" focusable="false" viewBox="0 0 12 12">
-				<path fill="none" stroke="currentColor" stroke-linecap="round"
-					d="M10 4c-.8-1.1-2-2.5-4.1-2.5-2.5 0-4.4 2-4.4 4.5s2 4.5 4.4 4.5c1.3 0 2.5-.6 3.3-1.5m1.3-7.5V4c0 .3-.2.5-.5.5H7.5" />
-			</svg>
+			<div class="svg-item">
+				<svg class="sound-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40" height="40"
+					viewBox="0 0 13 13" style="enable-background:new 0 0 13 13;" xml:space="preserve">
+					<g>
+						<g>
+							<path d="M7.747,3.17L7,3.833v0.049C7.618,4.557,8,5.481,8,6.5c0,1.02-0.382,1.943-1,2.618v0.049L7.747,9.83
+						C8.523,8.966,9,7.793,9,6.5S8.523,4.034,7.747,3.17z" />
+							<polygon points="0,4.5 0,6.5 0,8.5 2,8.5 5,11.5 5,1.5 2,4.5 		" />
+							<path d="M9.32,1.771L8.572,2.435C9.466,3.549,10,4.962,10,6.5s-0.534,2.952-1.427,4.064l0.747,0.664
+						C10.371,9.939,11,8.294,11,6.5C11,4.707,10.371,3.061,9.32,1.771z" />
+							<path d="M10.848,0.414l-0.752,0.668C11.286,2.56,12,4.445,12,6.5s-0.714,3.939-1.904,5.418l0.752,0.668
+						C12.191,10.93,13,8.81,13,6.5S12.191,2.07,10.848,0.414z" />
+						</g>
+					</g>
+				</svg>
+
+			</div>
+
+			<div class="svg-item">
+				<svg class="reload-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" focusable="false"
+					viewBox="0 0 12 12">
+					<path fill="none" stroke="currentColor" stroke-linecap="round"
+						d="M10 4c-.8-1.1-2-2.5-4.1-2.5-2.5 0-4.4 2-4.4 4.5s2 4.5 4.4 4.5c1.3 0 2.5-.6 3.3-1.5m1.3-7.5V4c0 .3-.2.5-.5.5H7.5" />
+				</svg>
+			</div>
+
 
 		</div>
 
 		<div class="inner-game">
-			<h1 class="header-inner">Крестики-нолики</h1>
-
+			<h1 class="header-title">Крестики-нолики</h1>
+			<p class="header-info" id="who"></p>
 			<div id="box-window_game">
-				<div class="box" tabindex="1"></div>
-				<div class="box" tabindex="2"></div>
-				<div class="box" tabindex='3'></div>
-				<div class="box" tabindex="4"></div>
-				<div class="box" tabindex="5"></div>
-				<div class="box" tabindex="6"></div>
-				<div class="box" tabindex="7"></div>
-				<div class="box" tabindex="8"></div>
-				<div class="box" tabindex="9"></div>
+				<div class="box" tabindex="1" onclick="soundClick()"></div>
+				<div class="box" tabindex="2" onclick="soundClick()"></div>
+				<div class="box" tabindex='3' onclick="soundClick()"></div>
+				<div class="box" tabindex="4" onclick="soundClick()"></div>
+				<div class="box" tabindex="5" onclick="soundClick()"></div>
+				<div class="box" tabindex="6" onclick="soundClick()"></div>
+				<div class="box" tabindex="7" onclick="soundClick()"></div>
+				<div class="box" tabindex="8" onclick="soundClick()"></div>
+				<div class="box" tabindex="9" onclick="soundClick()"></div>
 			</div>
 		</div>
 
@@ -56,7 +79,7 @@
 				</div>
 
 				<p class="result-game"></p>
-				<button class="btn" id="btn-js" type="button" method='post'>Закрыть и начать новую игру</button>
+				<button class="btn" id="btn-js" type="button">Закрыть и начать новую игру</button>
 			</div>
 
 		</div>
