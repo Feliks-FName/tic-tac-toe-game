@@ -15,17 +15,8 @@ let result = ''; //Динамическая строка с результато
 // Чей ход
 
 let whoMove = document.getElementById('who');
-/* (function writeWhoMove() {
-	if (move % 2 == 0) {
-		return whoMove.innerHTML = 'Ход Х';
-	} else if (move % 2 != 0) {
-		return whoMove.innerHTML = 'Ход 0';
 
-	} else if (modal.classList.contains('active')) {
-		return whoMove.innerHTML = 'Ход Х';
-	}
-})(); */
-// whoMove.innerHTML = writeWhoMove();
+whoMove.innerHTML = writeWhoMove();
 console.log(whoMove);
 
 
@@ -49,7 +40,7 @@ windowGame.addEventListener('click', function (e) {
 });
 
 function check() {
-	// writeWhoMove();
+	writeWhoMove();
 
 	const arr = [
 		[0, 1, 2],
@@ -73,6 +64,7 @@ function check() {
 			result = 'Победили крестики!';
 			addClassLineBox(arr, i);
 			setTimeout(prepaireResult, 400, result);
+			firstWhoMove()
 			scoreWin(scoreX, winX++, 'крестиков');
 			break;
 
@@ -83,6 +75,7 @@ function check() {
 			result = 'Победили нолики!';
 			addClassLineBox(arr, i);
 			setTimeout(prepaireResult, 400, result);
+			firstWhoMove()
 			scoreWin(scoreO, winO++, 'ноликов');
 
 			break;
@@ -91,6 +84,7 @@ function check() {
 
 			result = 'Ничья!'
 			prepaireResult(result);
+			firstWhoMove()
 			break;
 
 		}
@@ -143,12 +137,21 @@ function reloadGame() {
 	setTimeout(function () {
 		reloadSvg.classList.remove('active');
 	}, 500)
-};
+}
 
+//Чей ход
+function writeWhoMove() {
+	if (move % 2 == 0) {
+		return whoMove.innerHTML = 'Ход Х';
+	} else if (move % 2 != 0) {
+		return whoMove.innerHTML = 'Ход 0';
 
-/* function firstWhoMove() {
-	whoMove.innerHTML = 'Ход Х'
-} */
+	}
+}
+// Сброс указателя ходов
+function firstWhoMove() {
+	return whoMove.innerHTML = 'Ход Х'
+}
 
 //Черта победы
 function addClassLineBox(arr, i) {
