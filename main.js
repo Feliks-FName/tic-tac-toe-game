@@ -29,14 +29,14 @@ let scoreO = document.querySelector('.score-o');
 
 
 // Игровое окно
-windowGame.addEventListener('click', function (e) {
+windowGame.addEventListener('click', function func(e) {
 	if (e.target.className == 'box') {
 		move % 2 === 0 ? e.target.classList.add('activeX') : e.target.classList.add('activeO');
 		move++;
 		check();
 
 
-	};
+	}
 });
 
 function check() {
@@ -62,10 +62,12 @@ function check() {
 			boxes[arr[i][2]].classList.contains('activeX')) {
 
 			result = 'Победили крестики!';
+			// windowGame.removeEventListener('click', func(e));
 			addClassLineBox(arr, i);
 			setTimeout(prepaireResult, 400, result);
 			firstWhoMove()
 			scoreWin(scoreX, winX++, 'крестиков');
+
 			break;
 
 		} else if (boxes[arr[i][0]].classList.contains('activeO') &&
@@ -74,6 +76,7 @@ function check() {
 
 			result = 'Победили нолики!';
 			addClassLineBox(arr, i);
+
 			setTimeout(prepaireResult, 400, result);
 			firstWhoMove()
 			scoreWin(scoreO, winO++, 'ноликов');
@@ -133,6 +136,8 @@ function reloadGame() {
 	reloadSvg.classList.add('active');
 	clearField()
 	move = 0;
+	firstWhoMove();
+
 
 	setTimeout(function () {
 		reloadSvg.classList.remove('active');
@@ -158,6 +163,7 @@ function addClassLineBox(arr, i) {
 	boxes[arr[i][0]].classList.add('line');
 	boxes[arr[i][1]].classList.add('line');
 	boxes[arr[i][2]].classList.add('line');
+
 }
 
 //Очки побед
